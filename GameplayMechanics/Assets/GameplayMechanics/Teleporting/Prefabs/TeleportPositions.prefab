@@ -9,9 +9,11 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4577767207854224445}
+  - component: {fileID: 2562541011264908716}
+  - component: {fileID: 3618608184697320009}
   m_Layer: 0
   m_Name: SecondPosition
-  m_TagString: Untagged
+  m_TagString: TeleportPoint
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -32,6 +34,40 @@ Transform:
   - {fileID: 5921055855649104457}
   m_Father: {fileID: 9110734938732012873}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!65 &2562541011264908716
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 840151080877612124}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 1
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 0.01, y: 0.8845873, z: 0.01}
+  m_Center: {x: 0, y: 0.5499152, z: 0}
+--- !u!114 &3618608184697320009
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 840151080877612124}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c6287eff54694c859904184ee1cce0fd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  nextTeleportPosition: {fileID: 0}
 --- !u!1 &966783703084182709
 GameObject:
   m_ObjectHideFlags: 0
@@ -43,7 +79,6 @@ GameObject:
   - component: {fileID: 5825445146819716935}
   - component: {fileID: 4765133012400682575}
   - component: {fileID: 5688931571115421657}
-  - component: {fileID: 3207984527972521087}
   m_Layer: 0
   m_Name: Cylinder
   m_TagString: Untagged
@@ -116,29 +151,6 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!136 &3207984527972521087
-CapsuleCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 966783703084182709}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 0
-  m_ProvidesContacts: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Radius: 0.5000001
-  m_Height: 2
-  m_Direction: 1
-  m_Center: {x: 0.000000059604645, y: 0, z: -0.00000008940697}
 --- !u!1 &5037669073113374774
 GameObject:
   m_ObjectHideFlags: 0
@@ -150,7 +162,6 @@ GameObject:
   - component: {fileID: 7472721775129967842}
   - component: {fileID: 3584774653147815644}
   - component: {fileID: 2073247400511278416}
-  - component: {fileID: 8855499391631407545}
   m_Layer: 0
   m_Name: Cylinder
   m_TagString: Untagged
@@ -223,29 +234,6 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!136 &8855499391631407545
-CapsuleCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5037669073113374774}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 0
-  m_ProvidesContacts: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Radius: 0.5000001
-  m_Height: 2
-  m_Direction: 1
-  m_Center: {x: 0.000000059604645, y: 0, z: -0.00000008940697}
 --- !u!1 &5582066238975177317
 GameObject:
   m_ObjectHideFlags: 0
@@ -287,9 +275,11 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5134055909294759266}
+  - component: {fileID: 7926461776549662994}
+  - component: {fileID: 2174316898288246457}
   m_Layer: 0
   m_Name: FirstPosition
-  m_TagString: Untagged
+  m_TagString: TeleportPoint
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -310,6 +300,40 @@ Transform:
   - {fileID: 6304969960782233094}
   m_Father: {fileID: 9110734938732012873}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!65 &7926461776549662994
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7322640034350049607}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 1
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 0.01, y: 0.8845873, z: 0.01}
+  m_Center: {x: 0, y: 0.5499152, z: 0}
+--- !u!114 &2174316898288246457
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7322640034350049607}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c6287eff54694c859904184ee1cce0fd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  nextTeleportPosition: {fileID: 0}
 --- !u!1 &8535328295906753348
 GameObject:
   m_ObjectHideFlags: 0
@@ -389,9 +413,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   teleportingDelay: 10
-  teleportPositions:
+  singleTeleportList:
+  - {fileID: 2174316898288246457}
+  - {fileID: 3618608184697320009}
+  teleportTransforms:
   - {fileID: 5134055909294759266}
   - {fileID: 4577767207854224445}
   teleportingPositionColliders:
-  - {fileID: 8855499391631407545}
-  - {fileID: 3207984527972521087}
+  - {fileID: 7926461776549662994}
+  - {fileID: 2562541011264908716}

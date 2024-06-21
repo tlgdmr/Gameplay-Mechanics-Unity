@@ -9,11 +9,12 @@ namespace GameplayMechanics.Teleporting.Scripts.Entities
         [SerializeField] private PlayerAnimation playerAnimation;
 
         private bool _isTeleporting;
+        private Transform _currentTeleportingPosition;
         
         public void Initialize()
         {
-            playerInteraction.Initialize(SetTeleportingStatus);
-            playerAnimation.Initialize(SetTeleportingStatus);
+            playerInteraction.Initialize(SetTeleportingStatus, GetNewPlayerPosition);
+            playerAnimation.Initialize(SetTeleportingStatus, SetNewPlayerPosition);
         }
 
         private void Update()
@@ -40,9 +41,14 @@ namespace GameplayMechanics.Teleporting.Scripts.Entities
             transform.Translate(movementDirection);
         }
 
+        private void GetNewPlayerPosition(Transform nextTeleportingTransform)
+        {
+            _currentTeleportingPosition = nextTeleportingTransform.transform;
+        }
+
         private void SetNewPlayerPosition()
         {
-            
+            transform.position = _currentTeleportingPosition.position;
         }
 
         private void SetTeleportingStatus(bool status)

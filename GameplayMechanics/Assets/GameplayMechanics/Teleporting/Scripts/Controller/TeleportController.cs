@@ -7,11 +7,11 @@ namespace GameplayMechanics.Teleporting.Scripts.Controller
 {
     public class TeleportController : MonoBehaviour
     {
-        private List<TeleportEntity> _teleportEntities;
+        private List<TeleportGroupEntity> _teleportEntities;
     
         public void Initialize()
         {
-            _teleportEntities = FindObjectsOfType<TeleportEntity>().ToList();
+            _teleportEntities = FindObjectsOfType<TeleportGroupEntity>().ToList();
 
             foreach (var teleportEntity in _teleportEntities)
             {

@@ -1,68 +1,75 @@
-﻿using System;
+﻿using UnityEngine;
+using System;
 using System.Collections;
-using UnityEngine;
 
-namespace GameplayMechanics.Teleporting.Scripts.Entities
+public class PlayerAnimation : MonoBehaviour
 {
-    public class PlayerAnimation : MonoBehaviour
+    [SerializeField] private Renderer renderer;
+    [SerializeField] private float dissolvingAnimDuration;
+    [SerializeField] private float delayBetweenAnimations;
+    
+    private Action<bool> _onPlayerTeleportingEnd;
+    private Action _onPlayerTeleportingBreak;
+    private static readonly int DissolveStrength = Shader.PropertyToID("_DissolveStrength");
+    private MaterialPropertyBlock _propertyBlock;
+
+    public void Initialize(Action<bool> onPlayerTeleportingEnd, Action onPlayerTeleportingBreak)
     {
-        [SerializeField] private Material dissolveMaterial;
-        [SerializeField] private float dissolvingAnimDuration;
-        [SerializeField] private float delayBetweenAnimations;
-        
-        private Action<bool> _onPlayerTeleportingEnd;
-        private static readonly int DissolveStrength = Shader.PropertyToID("_DissolveStrength");
-        
-        public void Initialize(Action<bool> onPlayerTeleportingEnd)
-        {
-            _onPlayerTeleportingEnd = onPlayerTeleportingEnd;
-        }
+        _propertyBlock = new MaterialPropertyBlock();
+        _onPlayerTeleportingEnd = onPlayerTeleportingEnd;
+        _onPlayerTeleportingBreak = onPlayerTeleportingBreak;
+    }
 
-        public void StartTeleportingAnim()
-        {
-            StartCoroutine(StartDissolvingAnimation());
-        }
+    public void StartTeleportingAnim()
+    {
+        StartCoroutine(StartDissolvingAnimation());
+    }
 
-        private IEnumerator StartDissolvingAnimation()
+    private IEnumerator StartDissolvingAnimation()
+    {
+        var elapsedTime = 0.0f;
+        
+        while (elapsedTime < dissolvingAnimDuration)
         {
-            var elapsedTime = 0.0f;
+            elapsedTime += Time.deltaTime;
+            var dissolveStrengthValue = Mathf.Lerp(0.0f, 1.0f, elapsedTime / dissolvingAnimDuration);
             
-            while (elapsedTime < dissolvingAnimDuration)
-            {
-                elapsedTime += Time.deltaTime;
-                var dissolveStrengthValue = Mathf.Lerp(0.0f, 1.0f, elapsedTime / dissolvingAnimDuration);
-                dissolveMaterial.SetFloat(DissolveStrength,dissolveStrengthValue);
-                yield return null;
-            }
+            _propertyBlock.SetFloat(DissolveStrength, dissolveStrengthValue);
+            renderer.SetPropertyBlock(_propertyBlock);
             
-            StartCoroutine(ApplyDelayBetweenAnimation());
+            yield return null;
         }
         
-        private IEnumerator ApplyDelayBetweenAnimation()
+        StartCoroutine(ApplyDelayBetweenAnimation());
+    }
+    
+    private IEnumerator ApplyDelayBetweenAnimation()
+    {
+        _onPlayerTeleportingBreak?.Invoke();
+        yield return new WaitForSeconds(delayBetweenAnimations);
+        StartCoroutine(StartReDissolvingAnimation());
+    }
+    
+    private IEnumerator StartReDissolvingAnimation()
+    {
+        var elapsedTime = 0.0f;
+        
+        while (elapsedTime < dissolvingAnimDuration)
         {
-            yield return new WaitForSeconds(delayBetweenAnimations);
-            StartCoroutine(StartReDissolvingAnimation());
+            elapsedTime += Time.deltaTime;
+            var dissolveStrengthValue = Mathf.Lerp(1.0f, 0.0f, elapsedTime / dissolvingAnimDuration);
+            
+            _propertyBlock.SetFloat(DissolveStrength, dissolveStrengthValue);
+            renderer.SetPropertyBlock(_propertyBlock);
+            
+            yield return null;
         }
         
-        
-        private IEnumerator StartReDissolvingAnimation()
-        {
-            var elapsedTime = 0.0f;
-            
-            while (elapsedTime < dissolvingAnimDuration)
-            {
-                elapsedTime += Time.deltaTime;
-                var dissolveStrengthValue = Mathf.Lerp(1.0f, 0.0f, elapsedTime / dissolvingAnimDuration);
-                dissolveMaterial.SetFloat(DissolveStrength,dissolveStrengthValue);
-                yield return null;
-            }
-            
-            OnTeleportingEnd();
-        }
+        OnTeleportingEnd();
+    }
 
-        private void OnTeleportingEnd()
-        {
-            _onPlayerTeleportingEnd?.Invoke(false);
-        }
+    private void OnTeleportingEnd()
+    {
+        _onPlayerTeleportingEnd?.Invoke(false);
     }
 }
