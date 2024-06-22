@@ -1,10 +1,11 @@
 ﻿using UnityEngine;
 using System;
 using System.Collections;
+using UnityEngine.Serialization;
 
 public class PlayerAnimation : MonoBehaviour
 {
-    [SerializeField] private Renderer renderer;
+    [SerializeField] private Renderer objectRenderer;
     [SerializeField] private float dissolvingAnimDuration;
     [SerializeField] private float delayBetweenAnimations;
     
@@ -35,7 +36,7 @@ public class PlayerAnimation : MonoBehaviour
             var dissolveStrengthValue = Mathf.Lerp(0.0f, 1.0f, elapsedTime / dissolvingAnimDuration);
             
             _propertyBlock.SetFloat(DissolveStrength, dissolveStrengthValue);
-            renderer.SetPropertyBlock(_propertyBlock);
+            objectRenderer.SetPropertyBlock(_propertyBlock);
             
             yield return null;
         }
@@ -60,7 +61,7 @@ public class PlayerAnimation : MonoBehaviour
             var dissolveStrengthValue = Mathf.Lerp(1.0f, 0.0f, elapsedTime / dissolvingAnimDuration);
             
             _propertyBlock.SetFloat(DissolveStrength, dissolveStrengthValue);
-            renderer.SetPropertyBlock(_propertyBlock);
+            objectRenderer.SetPropertyBlock(_propertyBlock);
             
             yield return null;
         }

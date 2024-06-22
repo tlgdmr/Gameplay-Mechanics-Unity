@@ -179,9 +179,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8cd583de79284457bff64a7e3afa8a7e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  renderer: {fileID: 5067366655930780748}
-  dissolvingAnimDuration: 3
-  delayBetweenAnimations: 2
+  objectRenderer: {fileID: 5067366655930780748}
+  dissolvingAnimDuration: 1
+  delayBetweenAnimations: 0.25
 --- !u!114 &753735050571950877
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -412,7 +412,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3a90db1357bdd0f409ecba727b05da96, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  teleportingDelay: 10
+  teleportingDelay: 5
   singleTeleportList:
   - {fileID: 2174316898288246457}
   - {fileID: 3618608184697320009}
