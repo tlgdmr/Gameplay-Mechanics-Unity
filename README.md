@@ -6,7 +6,10 @@ Welcome to the GameplayMechanicsUnity repository! This repository contains a col
 
 Each folder in this repository represents a unique gameplay mechanic example:
 
-- **Teleporting** - Instantly moves players or objects to a new location.
+- **Teleporting** - Instant movement of players or objects to a predetermined location.
+- **Basic Time Controlling** - Manipulate time including stopping, resuming, and altering the speed of gameplay.
+- **Advanced Time Controlling** - Offers smooth transitions when slowing down or speeding up the game time.
+- **Rewind Time** - Allows for the rewinding of gameplay to previous states.
 
 ## Getting Started
 
