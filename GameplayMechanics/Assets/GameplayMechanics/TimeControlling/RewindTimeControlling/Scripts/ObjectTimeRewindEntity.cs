@@ -10,8 +10,6 @@ namespace GameplayMechanics.TimeControlling.RewindTimeControlling.Scripts
         [SerializeField] private Rigidbody rb;
         private List<ObjectTransformData> _transformData;
         
-        public bool IsRewinding { private set; get; }
-        
         public void Initialize()
         {
             _transformData = new List<ObjectTransformData>();
@@ -19,17 +17,18 @@ namespace GameplayMechanics.TimeControlling.RewindTimeControlling.Scripts
 
         public void RewindTime()
         {
-            if (_transformData.Count <= 0)
-            {                
-                RecordTime();
-                return;
+            if (_transformData.Count > 0)
+            {           
+                rb.isKinematic = true;
+                var objectTransformData = _transformData[0];
+                transform.position = objectTransformData.position;
+                transform.rotation = objectTransformData.rotation;
+                _transformData.RemoveAt(0);
             }
-
-            rb.isKinematic = true;
-            var objectTransformData = _transformData[0];
-            transform.position = objectTransformData.position;
-            transform.rotation = objectTransformData.rotation;
-            _transformData.RemoveAt(0);
+            else
+            {
+                RecordTime();
+            }
         }
 
         public void RecordTime()
