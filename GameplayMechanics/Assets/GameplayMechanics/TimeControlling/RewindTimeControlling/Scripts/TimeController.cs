@@ -12,7 +12,7 @@ namespace GameplayMechanics.TimeControlling.RewindTimeControlling.Scripts
             _gameManager = gameManager;
         }
 
-        private void Update()
+        private void FixedUpdate()
         {
             if (Input.GetKey(KeyCode.A))
             {
