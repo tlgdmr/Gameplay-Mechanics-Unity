@@ -7,9 +7,14 @@ Welcome to the GameplayMechanicsUnity repository! This repository contains a col
 Each folder in this repository represents a unique gameplay mechanic example:
 
 - **Teleporting** - Instant movement of players or objects to a predetermined location.
+![Teleporting](https://github.com/tlgdmr/Gameplay-Mechanics-Unity/assets/76128236/e2cd2814-0296-4d88-9930-4090d385bd83)
 - **Basic Time Controlling** - Manipulate time including stopping, resuming, and altering the speed of gameplay.
+![BasicTimeControlling](https://github.com/tlgdmr/Gameplay-Mechanics-Unity/assets/76128236/c8f1406e-ec88-4361-967d-8f5d49c5e8d3)
 - **Advanced Time Controlling** - Offers smooth transitions when slowing down or speeding up the game time.
+![SlowindDownSmoothly](https://github.com/tlgdmr/Gameplay-Mechanics-Unity/assets/76128236/94425082-124f-49d7-9c33-80b7b01c109a)
+![SpeedUpSmoothly](https://github.com/tlgdmr/Gameplay-Mechanics-Unity/assets/76128236/e44439a3-81e8-44e3-ac0e-ffbe47b5a057)
 - **Rewind Time** - Allows for the rewinding of gameplay to previous states.
+![Rewind](https://github.com/tlgdmr/Gameplay-Mechanics-Unity/assets/76128236/c5cc3fd2-c28d-440f-8fa6-d2266384cf88)
 
 ## Getting Started
 
