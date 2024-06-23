@@ -7,7 +7,10 @@ namespace GameplayMechanics.TimeControlling.RewindTimeControlling.Scripts
     public class ObjectTimeRewindEntity : MonoBehaviour
     {
         [SerializeField] private int maxNumberOfRewindCount;
+        [SerializeField] private Rigidbody rb;
         private List<ObjectTransformData> _transformData;
+        
+        public bool IsRewinding { private set; get; }
         
         public void Initialize()
         {
@@ -22,13 +25,16 @@ namespace GameplayMechanics.TimeControlling.RewindTimeControlling.Scripts
                 return;
             }
 
-            transform.position = _transformData[0].position;
-            transform.rotation = _transformData[0].rotation;
+            rb.isKinematic = true;
+            var objectTransformData = _transformData[0];
+            transform.position = objectTransformData.position;
+            transform.rotation = objectTransformData.rotation;
             _transformData.RemoveAt(0);
         }
 
         public void RecordTime()
         {
+            rb.isKinematic = false;
             if (_transformData.Count >= maxNumberOfRewindCount)
             {
                 _transformData.RemoveAt(_transformData.Count - 1);
