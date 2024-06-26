@@ -17,6 +17,8 @@ Each folder in this repository represents a unique gameplay mechanic example:
 ![Rewind](https://github.com/tlgdmr/Gameplay-Mechanics-Unity/assets/76128236/c5cc3fd2-c28d-440f-8fa6-d2266384cf88)
 - **Dynamic Money Counter** - Real-time adjustment of monetary values with increasing and decreasing animations.
 ![MoneyCounter](https://github.com/tlgdmr/Gameplay-Mechanics-Unity/assets/76128236/3ad0948c-489d-4c0e-afde-1ca5d1b05035)
+- **Day-Night Cycle** - Synchronizes the in-game environment with the user's local time, updating the lighting and time display accordingly.
+![Day-NightCycle](https://github.com/tlgdmr/Gameplay-Mechanics-Unity/assets/76128236/2617a360-840b-4a9c-ab12-959f166ed736)
 
 ## Getting Started
 
